@@ -1,0 +1,118 @@
+<nav class="navbar navbar" style="background-color: rgba(49, 220, 250, 0.897);">
+    <a class="navbar-brand text-white">
+      <img src="../app/../assets/maps.svg" width="35" height="35" class="align-center" alt="">
+      LOCALIZACIÓN WEB</a>
+      <ul class="nav justify-content-center ">
+        <li class="nav-item ">
+          <a class="nav-link text-white" href="#" routerLink= "/agregar/put">AGREGAR</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="https://getbootstrap.com/">BOOTSTRAP.COM</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="https://angular.io/">ANGULAR.IO</a>
+        </li>
+      </ul>
+    <form class="form-inline">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </nav>
+ <!-- section mostrar todos los clientes -->
+  <section>
+    <div class="container pt-4">
+        <h2 class="text-center">Registros</h2>
+        <table class="table">
+            <thead class="table-dark">
+              <tr>
+                <th >No.</th>
+                <td >Nombre</td>
+                <td >ApPaterno</td>
+                <td >ApMaterno</td>
+                <td >Direccción</td>
+                <td >Estado</td>
+                <td ></td>
+                <td ></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of lista">
+                <th>{{item.idCliente}}</th>
+                <td>{{item.nombre}}</td>
+                <td>{{item.apPaterno}}</td>
+                <td>{{item.apMaterno}}</td>
+                <td>{{item.dircli}}</td>
+                <td>
+                    <span *ngIf="item.estatus=='ACTIVO'" class="badge badge-success">{{item.estatus}}</span>
+                    <span *ngIf="item.estatus=='BAJA'" class="badge badge-danger">{{item.estatus}}</span>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-outline-danger"  (click)="getEliminar(item.idCliente)"
+                    data-placement="top" >
+                    Eliminar
+                  </button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-outline-warning" routerLink= "/editar/{{item.idCliente}}"
+                    data-placement="top">
+                        Editar
+                  </button>
+               </td>
+              </tr>
+            </tbody>
+          </table>
+          <button class="btn btn-outline-primary" type="submit" routerLink= "/agregar/put">Agregar Registro</button>
+    </div>
+</section>
+<!-- Footer -->
+<!-- <footer class="page-footer font-small mt-5" style="background-color: rgb(163, 239, 245);">
+  <div class="container">
+  </div>
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="http://localhost:4200/"> LOCALIZACIÓN WEB.com</a>
+  </div>
+</footer> -->
+<!-- Footer -->
+<!-- section Agregar regrsitro -->
+<!-- <section>
+    <div class="container pt-4">
+        <h2 class="text-center">Agregar</h2>
+        <form (ngSubmit)="agregarRegistro()">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">Id Cliente</label>
+                    <input type="text" [(ngModel)]="cliente.idCliente" class="form-control" name="clienteid" value="" required>
+                  </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="validationDefault01">Nombre</label>
+                <input type="text" [(ngModel)]="cliente.nombre" class="form-control" name="nombre" value="" required>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationDefault02">Apellido Parterno</label>
+                <input type="text" [(ngModel)]="cliente.apPaterno" class="form-control" name="paterno" value="" required>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="validationDefault02">Apellido Marterno</label>
+                <input type="text" [(ngModel)]="cliente.apMaterno" class="form-control" name="materno" value="" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-6 mb-3">
+                <label for="validationDefault03">Dirección</label>
+                <input type="text" [(ngModel)]="cliente.dir" class="form-control" name="dir" required>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="validationDefault04">Estatus</label>
+                <select class="custom-select" [(ngModel)]="cliente.estatus" name="estado" required>
+                  <option selected disabled value="">Selecciona</option>
+                  <option>ACTIVO</option>
+                  <option>BAJA</option>
+                </select>
+              </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Agregar</button>
+          </form>
+    </div>
+</section> -->

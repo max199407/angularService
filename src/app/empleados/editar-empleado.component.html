@@ -1,0 +1,89 @@
+<nav class="navbar navbar" style="background-color: rgba(49, 220, 250, 0.897);">
+  <a class="navbar-brand text-white">
+    <img src="../app/../assets/maps.svg" width="35" height="35" class="d-inline-block align-center" alt="">
+    LOCALIZACIÓN WEB</a>
+    <ul class="nav justify-content-center">
+      <li class="nav-item text-white">
+        <a class="nav-link text-white" href="#">INICIO</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#" routerLink= "/agregar/put">AGREGAR</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="https://getbootstrap.com/">BOOTSTRAP.COM</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="https://angular.io/">ANGULAR.IO</a>
+      </li>
+    </ul>
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav>
+<!-- section Editar regrsitro -->
+<section>
+    <div class="container pt-4">
+        <h2 class="text-center">Editar</h2>
+        <form (ngSubmit)="f.form.valid && geteditarRegistro()" #f="ngForm" novalidate>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="clienteID">Id Cliente</label>
+                    <input type="text" [(ngModel)]="cliente.idCliente"  name="clienteID" id="clienteID" class="form-control"  value="" disabled>
+                  </div>
+            </div>
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" [(ngModel)]="cliente.nombre"  name="nombre" id="nombre" #nombre="ngModel"
+                [ngClass]="{ 'is-invalid': nombre.invalid && nombre.dirty}" required minlength="3" maxlength="30">
+                <div *ngIf="nombre.invalid" class="invalid-feedback">
+                  <div *ngIf="nombre.errors.required">Campo obligatorio</div>
+                  <div *ngIf="nombre.errors.minlength">Debe contener de 3 a 20 caracteres</div>
+                </div>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <label for="paterno">Apellido Parterno</label>
+                <input type="text" [(ngModel)]="cliente.apPaterno" class="form-control" name="paterno" id="paterno" #paterno="ngModel"
+                [ngClass]="{ 'is-invalid': paterno.invalid && paterno.dirty}" required minlength="3" maxlength="20">
+                <div *ngIf="paterno.invalid" class="invalid-feedback">
+                  <div *ngIf="paterno.errors.required">Campo obligatorio</div>
+                  <div *ngIf="paterno.errors.minlength">Debe contener de 3 a 20 caracteres</div>
+              </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="materno">Apellido Marterno</label>
+                <input type="text" [(ngModel)]="cliente.apMaterno" class="form-control" name="materno"  id="materno" #materno="ngModel"
+                [ngClass]="{ 'is-invalid': materno.invalid && materno.dirty}" required minlength="3" maxlength="20">
+                <div *ngIf="materno.invalid" class="invalid-feedback">
+                  <div *ngIf="materno.errors.required">Campo obligatorio</div>
+                  <div *ngIf="materno.errors.minlength">Debe contener de 3 a 20 caracteres</div>
+              </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="dir">Dirección</label>
+                <input type="text" [(ngModel)]="cliente.dircli" class="form-control" name="dir" id="dir" #dir="ngModel"
+                [ngClass]="{ 'is-invalid': dir.invalid && dir.dirty}" required minlength="5" maxlength="40">
+                <div *ngIf="dir.invalid" class="invalid-feedback">
+                  <div *ngIf="dir.errors.required">Campo obligatorio</div>
+                  <div *ngIf="dir.errors.minlength">Debe contener de 5 a 40 caracteres</div>
+              </div>
+              </div>
+              <div class="col-md-3 mb-3">
+                <label for="estado">Estatus</label>
+                <input class="custom-select" [(ngModel)]="cliente.estatus" name="estado" id="estado" #estado="ngModel"
+                [ngClass]="{ 'is-invalid': estado.invalid && estado.dirty}" required minlength="4" maxlength="8">
+                  <div *ngIf="estado.invalid" class="invalid-feedback">
+                    <div *ngIf="estado.errors.required">Campo obligatorio</div>
+                    <div *ngIf="estado.errors.minlength">Debe contener de 4 a 8 caracteres</div>
+                </div>
+              </div>
+            </div>
+            <button class="btn btn-outline-primary mr-15px" type="submit">Guardar</button>
+          </form>
+    </div>
+</section>
